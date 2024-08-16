@@ -1,7 +1,7 @@
 <script>
   /** @type {import('./$types').PageData} */
   import { supabase } from "$lib/supabase";
-  import { goto } from "$app/navigation";
+  import { goto, invalidateAll } from "$app/navigation";
   export let data;
 
   let email = "";
@@ -25,6 +25,7 @@
       if (errorinseruser) {
         errorMessage = errorinseruser.message;
       } else {
+        invalidateAll()
         goto("/dashboard");
       }
     }
