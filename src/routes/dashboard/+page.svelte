@@ -1,6 +1,6 @@
 <script>
     import { supabase } from '$lib/supabase';
-    import { invalidate } from '$app/navigation';
+    import { invalidate, invalidateAll } from '$app/navigation';
   
     /** @type {import('./$types').PageData} */
     export let data;
@@ -52,7 +52,9 @@
   <div class="flex flex-row mb-3">
     <h1 class="text-3xl font-bold mr-3">Blogs</h1>
   
-    <button  class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" on:click={()=>{showcreating=!showcreating}}>
+    <button  class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" on:click={()=>{
+      invalidateAll()
+      showcreating=!showcreating}}>
         
         {showcreating ? 'Hide' : 'Show'} Create</button>
 
